@@ -18,11 +18,9 @@ add_compile_options(-Wall -Wnon-virtual-dtor -Woverloaded-virtual -fvisibility=h
 # * `-fvisibility`
 #   * http://gihyo.jp/lifestyle/serial/01/ganshiki-soushi/0034
 
-find_package(gflags REQUIRED)
-include_directories(${gflags_INCLUDE_DIR})
-
-link_directories(deps/libuv/build/Release)
-include_directories(deps/libuv/include)
+link_directories(deps/lib)
+include_directories(deps/include)
+add_compile_options(-DASIO_STANDALONE)
 
 file(GLOB app_dirs src/*)
 foreach(dir ${app_dirs})
