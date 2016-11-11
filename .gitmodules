@@ -1,9 +1,9 @@
 [submodule "deps/gflags"]
-	path = src/gflags
+	path = deps/src/gflags
 	url = https://github.com/gflags/gflags.git
 [submodule "deps/libuv"]
-	path = src/libuv
+	path = deps/src/libuv
 	url = https://github.com/libuv/libuv.git
 [submodule "deps/asio"]
-	path = src/asio
+	path = deps/src/asio
 	url = https://github.com/chriskohlhoff/asio
