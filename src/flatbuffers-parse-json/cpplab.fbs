@@ -1,0 +1,11 @@
+namespace cpplab;
+
+table User {
+  name: string (required);
+  location: string;
+}
+
+table UserGroup {
+  name: string (required);
+  users: [User];
+}

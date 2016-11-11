@@ -46,6 +46,7 @@ cmake -GNinja
 ninja
 cp flatc ../../bin/
 cp libflatbuffers.a ../../lib/
+cp -R include/flatbuffers ../../include/
 git add .
 git reset --hard
 cd ../..

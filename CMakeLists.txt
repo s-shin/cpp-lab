@@ -10,13 +10,6 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 add_compile_options(-Wall -Wnon-virtual-dtor -Woverloaded-virtual -fvisibility=hidden)
-# MEMO
-# * `-Wall`
-#   * 含まれないwarning: http://qiita.com/EqualL2/items/0cfb5b1cbfd70e2af662
-#   * `-Wnon-virtual-dtor`
-#   * `-Woverloaded-virtual`
-# * `-fvisibility`
-#   * http://gihyo.jp/lifestyle/serial/01/ganshiki-soushi/0034
 
 link_directories(deps/lib)
 include_directories(deps/include)
