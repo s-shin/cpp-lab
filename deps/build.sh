@@ -9,6 +9,8 @@ rm -rf include
 mkdir include
 rm -rf lib
 mkdir lib
+rm -rf bin
+mkdir bin
 
 echo "### gflags ###"
 cd src/gflags
@@ -35,4 +37,16 @@ echo
 echo "### asio ###"
 cp -R src/asio/asio/include/asio include/asio
 cp -R src/asio/asio/include/asio.hpp include/
+echo "=> OK"
+
+echo
+echo "### flatbuffers ###"
+cd src/flatbuffers
+cmake -GNinja
+ninja
+cp flatc ../../bin/
+cp libflatbuffers.a ../../lib/
+git add .
+git reset --hard
+cd ../..
 echo "=> OK"

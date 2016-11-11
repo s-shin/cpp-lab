@@ -7,3 +7,6 @@
 [submodule "deps/asio"]
 	path = deps/src/asio
 	url = https://github.com/chriskohlhoff/asio
+[submodule "deps/src/flatbuffers"]
+	path = deps/src/flatbuffers
+	url = https://github.com/google/flatbuffers.git

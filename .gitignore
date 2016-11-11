@@ -3,11 +3,12 @@ CMakeFiles
 cmake_install.cmake
 Makefile
 
-/bin/
-/build/
-/include/
-/lib/
-/deps/include/
-/deps/lib/
+/bin/*
+/build/*
+/include/*
+/lib/*
+/deps/include/*
+/deps/lib/*
+/deps/bin/*
 
 !.gitkeep
