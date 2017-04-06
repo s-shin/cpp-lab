@@ -82,10 +82,21 @@ int main(int argc, char **argv) {
     }
   }
 
-  rsa::RSACryptor public_key_cryptor(
+  rsa::Cryptor public_key_cryptor(
       rsa::Key(public_rsa, rsa::Key::Type::kPublic));
-  rsa::RSACryptor private_key_cryptor(
+  if (!public_key_cryptor.IsValid()) {
+    std::cout << "public_key_cryptor is invalid: "
+              << public_key_cryptor.last_error() << std::endl;
+    return 1;
+  }
+
+  rsa::Cryptor private_key_cryptor(
       rsa::Key(private_rsa, rsa::Key::Type::kPrivate));
+  if (!private_key_cryptor.IsValid()) {
+    std::cout << "private_key_cryptor is invalid: "
+              << private_key_cryptor.last_error() << std::endl;
+    return 1;
+  }
 
   std::string input;
   std::cin >> input;

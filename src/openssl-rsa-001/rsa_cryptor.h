@@ -75,12 +75,20 @@ class Key {
   Type type_;
 };
 
-class RSACryptor {
+class Cryptor {
  public:
-  RSACryptor(Key key) : RSACryptor(std::move(key), DefaultCryptoOption()) {}
+  Cryptor(Key key) : Cryptor(std::move(key), DefaultCryptoOption()) {}
 
-  RSACryptor(Key key, CryptoOption option)
+  Cryptor(Key key, CryptoOption option)
       : key_(std::move(key)), option_(std::move(option)) {}
+
+  bool IsValid() {
+    if (!key_) {
+      last_error_ = "Invalid key.";
+      return false;
+    }
+    return true;
+  }
 
   int GetMaxEncryptableBufferSize() {
     if (!key_) {
@@ -111,10 +119,15 @@ class RSACryptor {
 
   int Encrypt(const unsigned char *src_buf, int src_buf_size,
               unsigned char *dst_buf, int dst_buf_size) {
-    if (!key_) {
-      last_error_ = "Invalid key.";
+    if (!IsValid()) {
       return -1;
     }
+    if (key_.type() == Key::Type::kPrivate &&
+        option_.padding_mode == PaddingMode::kOAEP) {
+      last_error_ = "OAEP cannot be used for encyption by private key.";
+      return -1;
+    }
+
     if (src_buf_size > GetMaxEncryptableBufferSize()) {
       last_error_ = "Too large input buffer size.";
       return -1;
@@ -149,10 +162,15 @@ class RSACryptor {
 
   int Decrypt(const unsigned char *src_buf, int src_buf_size,
               unsigned char *dst_buf, int dst_buf_size) {
-    if (!key_) {
-      last_error_ = "Invalid key.";
+    if (!IsValid()) {
       return -1;
     }
+    if (key_.type() == Key::Type::kPublic &&
+        option_.padding_mode == PaddingMode::kOAEP) {
+      last_error_ = "OAEP cannot be used for decyption by public key.";
+      return -1;
+    }
+
     if (src_buf_size > GetMaxDecryptableBufferSize()) {
       last_error_ = "Too large input buffer size.";
       return -1;
