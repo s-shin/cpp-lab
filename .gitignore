@@ -10,5 +10,6 @@ Makefile
 /deps/include/*
 /deps/lib/*
 /deps/bin/*
+/tmp/
 
 !.gitkeep

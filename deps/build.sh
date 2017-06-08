@@ -51,3 +51,8 @@ git add .
 git reset --hard
 cd ../..
 echo "=> OK"
+
+echo
+echo "### spdlog ###"
+cp -R src/spdlog/include/spdlog include/spdlog
+echo "=> OK"

@@ -10,3 +10,6 @@
 [submodule "deps/src/flatbuffers"]
 	path = deps/src/flatbuffers
 	url = https://github.com/google/flatbuffers.git
+[submodule "deps/src/spdlog"]
+	path = deps/src/spdlog
+	url = https://github.com/gabime/spdlog
