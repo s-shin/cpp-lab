@@ -3,7 +3,7 @@ C++ Laboratory
 ```sh
 # Build dependencies
 git submodule update --init
-deps/build.sh
+deps/prepare.sh build
 
 # Build project
 mkdir build
