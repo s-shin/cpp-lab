@@ -3,6 +3,9 @@ CMakeFiles
 cmake_install.cmake
 Makefile
 
+/.idea
+/cmake-build-*
+
 /bin/*
 /build/*
 /include/*

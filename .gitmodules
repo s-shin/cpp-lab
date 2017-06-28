@@ -13,3 +13,6 @@
 [submodule "deps/src/spdlog"]
 	path = deps/src/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "deps/src/cnats"]
+	path = deps/src/cnats
+	url = https://github.com/nats-io/cnats.git
