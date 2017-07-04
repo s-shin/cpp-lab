@@ -129,7 +129,7 @@ deps.gflags.clean() {
 #---
 
 deps.libuv.is_built() {
-  [[ -d include/uv && -f lib/libuv.a ]]
+  [[ -d include/uv.h && -f lib/libuv.a ]]
 }
 
 deps.libuv.build() {
@@ -137,13 +137,13 @@ deps.libuv.build() {
   ./gyp_uv.py -f ninja
   ninja -C out/Release # or ninja -C out/Debug
   cp out/Release/libuv.a ../../lib/
-  cp -R include/ ../../include/uv
+  cp -R include/* ../../include/
   popd
 }
 
 deps.libuv.clean() {
   rm lib/libuv.a
-  rm -r include/uv
+  rm include/uv-* tree.h android-ifaddrs.h pthread-barrier.h stdint-msvc2008.h
 }
 
 #---

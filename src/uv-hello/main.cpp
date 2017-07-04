@@ -1,5 +1,5 @@
 #include <iostream>
-#include "uv/uv.h"
+#include "uv.h"
 
 int main(int argc, char *argv[]) {
   uv_loop_t *loop = uv_loop_new();
