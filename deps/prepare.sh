@@ -4,7 +4,7 @@ set -eu
 SCRIPT_DIR="$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)"
 cd "${SCRIPT_DIR}"
 
-ALL_TARGETS=(gflags libuv asio flatbuffers spdlog cnats)
+ALL_TARGETS=(gflags libuv asio flatbuffers spdlog cnats termbox)
 
 #-------------------------------------------------------------------------------
 # misc
@@ -218,6 +218,24 @@ deps.cnats.build() {
 deps.cnats.clean() {
   rm lib/libnats_static.a include/nats.h
   rm -r include/nats
+}
+
+#---
+
+deps.termbox.is_built() {
+  [[ -f lib/libtermbox.a && -f include/termbox.h ]]
+}
+
+deps.termbox.build() {
+  pushd src/termbox
+  ./waf --prefix=../.. distclean configure clean build install
+  popd
+}
+
+deps.termbox.clean() {
+  pushd src/termbox
+  ./waf --prefix=../.. configure uninstall distclean
+  popd
 }
 
 #-------------------------------------------------------------------------------
