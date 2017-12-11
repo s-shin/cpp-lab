@@ -16,3 +16,6 @@
 [submodule "deps/src/cnats"]
 	path = deps/src/cnats
 	url = https://github.com/nats-io/cnats.git
+[submodule "deps/src/termbox"]
+	path = deps/src/termbox
+	url = https://github.com/nsf/termbox.git
